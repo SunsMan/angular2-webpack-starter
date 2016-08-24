@@ -5,6 +5,7 @@ import { Component, ViewEncapsulation } from '@angular/core';
 
 import { AppState } from './app.service';
 
+
 /*
  * App Component
  * Top Level Component
@@ -16,31 +17,30 @@ import { AppState } from './app.service';
     './app.style.css'
   ],
   template: `
-    <nav>
-      <span>
-        <a [routerLink]=" ['./'] ">
-          Index
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./home'] ">
-          Home
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./detail'] ">
-          Detail
-        </a>
-      </span>
-      |
-      <span>
-        <a [routerLink]=" ['./about'] ">
-          About
-        </a>
-      </span>
-    </nav>
+    <header>
+      <div class="uui-header green_lime">
+          <nav>
+              <!--Responsive html-layuot-->
+              <div class="uui-responsive-header">
+                  <div class="responsive-header">
+                      <a href="#" class="responsive-brand-logo">
+                          <span class="logo">
+                              <img src="/images/ic_logo_UUi.svg" alt="" />
+                          </span>
+                          <span class="title">Unified UI</span>
+                      </a>
+                  </div>
+              </div>
+              <!---->
+              <a href="#" class="brand-logo">
+                  <span class="logo">
+                      <img src="/images/ic_logo_UUi.svg" alt="" />
+                  </span>
+                  Unified UI
+              </a>
+          </nav>
+      </div>
+    </header>
 
     <main>
       <router-outlet></router-outlet>
@@ -49,13 +49,18 @@ import { AppState } from './app.service';
     <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
 
     <footer>
-      <span>WebPack Angular 2 Starter by <a [href]="url">@AngularClass</a></span>
-      <div>
-        <a [href]="url">
-          <img [src]="angularclassLogo" width="25%">
-        </a>
+      <div class="uui-footer">
+          <div class="footer-logo-copyright">
+              <div class="epam-logo">
+                  <img src="/images/Logo_Epam_Color.svg" alt="" />
+              </div>
+              <p class="copyright">© 2016 EPAM Systems. All Rights Reserved.</p>
+          </div>
+          <div class="footer-build">
+              <p class="build">Build version v <span>2.0.0.1</span></p>
+          </div>
       </div>
-    </footer>
+    </footer >
   `
 })
 export class App {

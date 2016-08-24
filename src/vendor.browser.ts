@@ -20,6 +20,12 @@ import '@angularclass/request-idle-callback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
+//EPAM uui 2.0
+require('bootstrapcss');
+require('bootstrapjs');
+require('uuicorejs');
+require('uuicss');
+
 if ('production' === ENV) {
   // Production
 

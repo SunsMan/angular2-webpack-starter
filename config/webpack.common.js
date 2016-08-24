@@ -79,7 +79,12 @@ module.exports = {
 
     // remove other default values
     modulesDirectories: ['node_modules'],
-
+    alias: {
+      bootstrapcss: 'uui_2.0/uui/bootstrap/css/bootstrap.min.css',
+      bootstrapjs: 'uui_2.0/uui/bootstrap/js/bootstrap.min.js',
+      uuicorejs: 'uui_2.0/uui/js/uui-core.min.js',
+      uuicss: 'uui_2.0/uui/css/uui-all.css'
+    }
   },
 
   /*
@@ -136,7 +141,7 @@ module.exports = {
       /*
        * Typescript loader support for .ts and Angular 2 async routes via .async.ts
        * Replace templateUrl and stylesUrl with require()
-       * 
+       *
        * See: https://github.com/s-panferov/awesome-typescript-loader
        * See: https://github.com/TheLarkInn/angular2-template-loader
        */
@@ -176,7 +181,7 @@ module.exports = {
         loader: 'raw-loader',
         exclude: [helpers.root('src/index.html')]
       },
-      
+
       /* File loader for supporting images, for example, in CSS files.
       */
       {
