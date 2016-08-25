@@ -20,9 +20,9 @@ import '@angularclass/request-idle-callback';
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
-//EPAM uui 2.0
-require('bootstrapcss');
+// EPAM uui 2.0
 require('bootstrapjs');
+require('bootstrapcss');
 require('uuicorejs');
 require('uuicss');
 

@@ -1,7 +1,7 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
-import { CredentialHandler } from '../services'
-
+// import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
+// import { CredentialHandler } from '../services';
+import { Course } from './course';
 
 @Component({
   // The selector is what angular internally uses
@@ -21,46 +21,22 @@ import { CredentialHandler } from '../services'
   templateUrl: './login.template.html'
 })
 export class Login {
-  private formsErrors:any[];
-  private loginForm: FormGroup;
-  private fb:FormBuilder;
-  private user:any;
-  private credentialHandler:CredentialHandler;
+  private courses:Course[];
+  // loginForm:FormGroup;
+  formErrors:any[];
+  // private: user
 
   constructor() { }
 
   ngOnInit() {
     console.log('hello `Login` component');
-    this.loginForm = this.fb.group({});
-    this.initForm();
+    // this.loginForm = this.fb.group({});
+    // this.initForm();
   }
 
-  initForm() {
-    var vm = this;
-    this.loginForm = this.fb.group({
-      'login': [
-        this.user.login,
-        [
-          Validators.required
-        ]
-      ],
-      'pwd': [
-        this.user.pwd,
-        [
-          Validators.required,
-          Validators.minLength(5)
-        ]
-      ]
-    });
-  }
+  ngOnDestroy() { }
 
   onSubmit(){
     console.log('Form submited');
-    console.log(this.loginForm);
-    let checkForm = this.credentialHandler.checkCredentials(this.loginForm.controls['login'].value, this.loginForm.controls['pwd'].value);
-
   }
-
-
-
 }

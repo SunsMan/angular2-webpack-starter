@@ -1,3 +1,17 @@
-<div class="card-container">
+<form novalidate class="login-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
 
-</div>
+  <div class="uui-input-group" [ngClass]="{'input-error': loginForm.controls.login.hasError('required')}">
+    <input type="text" class="uui-form-element" formControlName="login" [ngClass]="{'error': loginForm.controls.login.hasError('required')}" />
+    <div class="error-notification" *ngIf="loginForm.controls.login.hasError('required')">
+      <p><span *ngIf="loginForm.controls.login.hasError('required')">Login is required. Please, enter your login here.</span></p>
+    </div>
+  </div>
+  <div class="uui-input-group" [ngClass]="{'input-error': loginForm.controls.pwd.hasError('required')}">
+    <input type="text" class="uui-form-element" formControlName="pwd" [ngClass]="{'error': loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('minlength')}" />
+    <div class="error-notification" *ngIf="loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('minlength')">
+      <p><span *ngIf="loginForm.controls.pwd.hasError('required')">Password is required. Please, enter your password here.</span>
+        <span *ngIf="loginForm.controls.pwd.hasError('minlength')">Minimal length of your password is 5 symbols</span></p>
+    </div>
+  </div>
+  <button class="uui-button dark-gray" type="submit">Sign in</button>
+</form>
