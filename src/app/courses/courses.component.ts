@@ -1,7 +1,8 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
+import {CourseItem} from "./../services/courseItem";
 // import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
 // import { CredentialHandler } from '../services';
-import { Course } from './course';
+
 
 @Component({
   // The selector is what angular internally uses
@@ -21,7 +22,7 @@ import { Course } from './course';
   templateUrl: './login.template.html'
 })
 export class Login {
-  private courses:Course[];
+  private courses:CourseItem[];
   // loginForm:FormGroup;
   formErrors:any[];
   // private: user

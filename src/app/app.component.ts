@@ -18,19 +18,40 @@ import { AppState } from './app.service';
   ],
   template: `
     <header>
-      <div class="uui-header green_lime">
+      <div class="uui-header navigation-header">
           <nav>
-              <!--Responsive html-layuot-->
-              <div class="uui-responsive-header">
-                  <div class="responsive-header">
-                      <a href="#" class="responsive-brand-logo">
-                          <span class="logo">
-                              <img src="/images/ic_logo_UUi.svg" alt="" />
-                          </span>
-                          <span class="title">Unified UI</span>
-                      </a>
-                  </div>
-              </div>
+              <!--Responsive html-layout-->
+              <!--<div class="uui-responsive-header">-->
+                  <!--<div class="responsive-header">-->
+                      <!--<div class="responsive-toggle-box">-->
+                          <!--<span></span>-->
+                          <!--<span></span>-->
+                          <!--<span></span>-->
+                      <!--</div>-->
+                      <!--<div class="responsive-hide-menu">-->
+                          <!--<span></span>-->
+                          <!--<span></span>-->
+                      <!--</div>-->
+                      <!--<a href="#" class="responsive-brand-logo">-->
+                          <!--<span class="arrow fa fa-angle-left"></span>-->
+                          <!--<span class="logo">-->
+                              <!--<img src="/images/ic_logo_UUi.svg" alt="" />-->
+                          <!--</span>-->
+                          <!--<span class="title">Unified UI</span>-->
+                      <!--</a>-->
+                  <!--</div>-->
+                  <!--<div class="responsive-menu">-->
+                      <!--<div class="menu-wrapper">-->
+                          <!--<div class="menu-scroll">-->
+                              <!--<ul class="nav navbar-nav">-->
+                                  <!--<li><a href="#"><span>Item 1</span></a></li>-->
+                                  <!--<li><a href="#"><span>Item 2</span></a></li>-->
+                                  <!--<li><a href="#"><span>Item 3</span></a></li>-->
+                              <!--</ul>-->
+                          <!--</div>-->
+                      <!--</div>-->
+                  <!--</div>-->
+              <!--</div>-->
               <!---->
               <a href="#" class="brand-logo">
                   <span class="logo">
@@ -38,6 +59,9 @@ import { AppState } from './app.service';
                   </span>
                   Unified UI
               </a>
+              <ul class="uui-navigation nav navbar-nav">
+                  <li class="active"><a href="/courses">Courses</a></li>
+              </ul>
           </nav>
       </div>
     </header>
@@ -75,6 +99,7 @@ export class App {
 
   ngOnInit() {
     console.log('Initial App State', this.appState.state);
+    // UUI.Navigation.init();
   }
 
 }

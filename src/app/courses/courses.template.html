@@ -1,4 +1,5 @@
 <h4>Available courses</h4>
+
 <table class="uui-table stripe no-border">
   <thead>
     <tr>
@@ -7,14 +8,16 @@
       <th>Duration</th>
       <th>Complexity</th>
       <th>Description</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <tr *ngFor="let item of courses">
-      <td>1 row</td>
-      <td>Unit 1x1</td>
-      <td>Unit 1x2</td>
-      <td>Unit 1x3</td>
+      <td [(ngModel)]="item.id"></td>
+      <td [(ngModel)]="item.name"></td>
+      <td [(ngModel)]="item.duration"></td>
+      <td [(ngModel)]="item.complexity"></td>
+      <td> <span [(ngModel)]="item.description"></span><button class="uui-button">Default button</button></td>
     </tr>
   </tbody>
 </table>

@@ -34,6 +34,9 @@ export class Login {
     this.loginForm = this.fb.group({});
     this.initForm();
   }
+  ngOnDestroy() {
+
+  }
 
   initForm() {
     var vm = this;

@@ -1,0 +1,10 @@
+<h4 class="add-edit__header">{{header}} course</h4>
+<form novalidate
+  [fromGroup]="courseInfoForm"
+  (ngSubmit)="onSubmit()">
+
+  <div class="add-edit__course-name">
+    {{course.name}}
+  </div>
+
+</form>
