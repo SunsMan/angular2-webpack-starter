@@ -1,0 +1,15 @@
+<h4 class="add-edit__header">{{header}} course</h4>
+<form novalidate
+      [fromGroup]="courseInfoForm"
+      (ngSubmit)="onSubmit()">
+  <h5>Name</h5>
+  <input class="add-edit__course-name uui-form-element" formControlName="name"/>
+  <h5>Duration</h5>
+  <input class="add-edit__course-name uui-form-element" formControlName="duration"/>
+  <h5>Complexity</h5>
+  <input class="add-edit__course-name uui-form-element" formControlName="complexity"/>
+  <h5>Description</h5>
+  <textarea class="uui-form-element" rows="3" cols="10" formControlName="description"></textarea>
+  <!--<input class="add-edit__course-name uui-form-element" formControlName="description"/>-->
+
+</form>

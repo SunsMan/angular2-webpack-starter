@@ -72,7 +72,7 @@ module.exports = {
      *
      * See: http://webpack.github.io/docs/configuration.html#resolve-extensions
      */
-    extensions: ['', '.ts', '.js', '.json'],
+    extensions: ['', '.ts', '.js', 'css', '.json'],
 
     // Make sure root is src
     root: helpers.root('src'),
@@ -80,10 +80,10 @@ module.exports = {
     // remove other default values
     modulesDirectories: ['node_modules'],
     alias: {
-      bootstrapcss: 'uui_2.0/uui/bootstrap/css/bootstrap.min.css',
-      bootstrapjs: 'uui_2.0/uui/bootstrap/js/bootstrap.min.js',
-      uuicorejs: 'uui_2.0/uui/js/uui-core.min.js',
-      uuicss: 'uui_2.0/uui/css/uui-all.css'
+      // uuiBootstrapCss: './../node_modules/uui-framework/bootstrap/css/bootstrap.min',
+      // bootstrapjs: 'uui_2.0/uui/bootstrap/js/bootstrap.min.js',
+      // uuicorejs: 'uui_2.0/uui/js/uui-core.min.js',
+      // uuicss: 'uui_2.0/uui/css/uui-all.css'
     }
   },
 
@@ -171,7 +171,9 @@ module.exports = {
         loaders: ['to-string-loader', 'css-loader']
       },
 
-      /* Raw loader support for *.html
+      // {test: /\.css$/, loaders: 'style-loader!css-loader' , include: /node_modules/},
+
+       /* Raw loader support for *.html
        * Returns file content as string
        *
        * See: https://github.com/webpack/raw-loader

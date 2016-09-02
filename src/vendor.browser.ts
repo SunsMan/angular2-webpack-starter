@@ -21,10 +21,10 @@ import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/mergeMap';
 
 // EPAM uui 2.0
-require('bootstrapjs');
-require('bootstrapcss');
-require('uuicorejs');
-require('uuicss');
+// require('bootstrapjs');
+// require('./../node_modules/uui-framework/bootstrap/css/bootstrap.css');
+// require('uuicorejs');
+// require('uuicss');
 
 if ('production' === ENV) {
   // Production

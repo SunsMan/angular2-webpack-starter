@@ -18,48 +18,18 @@ import { AppState } from './app.service';
   ],
   template: `
     <header>
-      <div class="uui-header navigation-header">
+      <div class="a2m-header navigation-header">
           <nav>
-              <!--Responsive html-layout-->
-              <!--<div class="uui-responsive-header">-->
-                  <!--<div class="responsive-header">-->
-                      <!--<div class="responsive-toggle-box">-->
-                          <!--<span></span>-->
-                          <!--<span></span>-->
-                          <!--<span></span>-->
-                      <!--</div>-->
-                      <!--<div class="responsive-hide-menu">-->
-                          <!--<span></span>-->
-                          <!--<span></span>-->
-                      <!--</div>-->
-                      <!--<a href="#" class="responsive-brand-logo">-->
-                          <!--<span class="arrow fa fa-angle-left"></span>-->
-                          <!--<span class="logo">-->
-                              <!--<img src="/images/ic_logo_UUi.svg" alt="" />-->
-                          <!--</span>-->
-                          <!--<span class="title">Unified UI</span>-->
-                      <!--</a>-->
-                  <!--</div>-->
-                  <!--<div class="responsive-menu">-->
-                      <!--<div class="menu-wrapper">-->
-                          <!--<div class="menu-scroll">-->
-                              <!--<ul class="nav navbar-nav">-->
-                                  <!--<li><a href="#"><span>Item 1</span></a></li>-->
-                                  <!--<li><a href="#"><span>Item 2</span></a></li>-->
-                                  <!--<li><a href="#"><span>Item 3</span></a></li>-->
-                              <!--</ul>-->
-                          <!--</div>-->
-                      <!--</div>-->
-                  <!--</div>-->
-              <!--</div>-->
-              <!---->
               <a href="#" class="brand-logo">
                   <span class="logo">
-                      <img src="/images/ic_logo_UUi.svg" alt="" />
+                      <img [src]="epam.logoGray" alt="" />
+                  </span>
+                  <span class="logo">
+                      <img [src]="epam.uuiLogo" alt="" />
                   </span>
                   Unified UI
               </a>
-              <ul class="uui-navigation nav navbar-nav">
+              <ul class="a2m-navigation nav navbar-nav">
                   <li class="active"><a href="/courses">Courses</a></li>
               </ul>
           </nav>
@@ -70,30 +40,31 @@ import { AppState } from './app.service';
       <router-outlet></router-outlet>
     </main>
 
-    <pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>
+    <!--<pre class="app-state">this.appState.state = {{ appState.state | json }}</pre>-->
 
     <footer>
-      <div class="uui-footer">
-          <div class="footer-logo-copyright">
-              <div class="epam-logo">
-                  <img src="/images/Logo_Epam_Color.svg" alt="" />
-              </div>
+      <div class="a2m-footer">
+          <div class="a2m-footer-logo-copyright">
+              <span class="logo">
+                  <img [src]="epam.logoGray" alt="" />
+              </span>
               <p class="copyright">© 2016 EPAM Systems. All Rights Reserved.</p>
-          </div>
-          <div class="footer-build">
-              <p class="build">Build version v <span>2.0.0.1</span></p>
           </div>
       </div>
     </footer >
   `
 })
 export class App {
-  angularclassLogo = 'assets/img/angularclass-avatar.png';
+  epam:any = {};
   name = 'Angular 2 Webpack Starter';
   url = 'https://twitter.com/AngularClass';
 
   constructor(
     public appState: AppState) {
+    this.epam.logoGray = 'assets/img/Logo_Epam_Gray.svg';
+    this.epam.logoWhite = 'assets/img/Logo_Epam_White.svg';
+    this.epam.logoColor = 'assets/img/Logo_Epam_Color.svg';
+    this.epam.uuiLogo = 'assets/img/ic_logo_UUi.svg';
 
   }
 

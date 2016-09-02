@@ -1,12 +1,17 @@
 import { WebpackAsyncRoute } from '@angularclass/webpack-toolkit';
 import { RouterConfig } from '@angular/router';
 import { Login } from './login';
+import { Courses } from './courses';
+import { AddEditCourse } from './add.edit.course';
 
 // import { DataResolver } from './app.resolver';
 
 export const routes: RouterConfig = [
   { path: '',      component: Login },
   { path: 'login',  component: Login },
+  { path: 'courses',  component: Courses },
+  { path: 'courses/new',  component: AddEditCourse },
+  { path: 'courses/:id',  component: AddEditCourse },
   // // make sure you match the component type string to the require in asyncRoutes
   // { path: 'about', component: 'About',
   //   resolve: {

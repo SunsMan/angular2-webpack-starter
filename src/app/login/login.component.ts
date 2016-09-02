@@ -16,7 +16,11 @@ import { CredentialHandler } from '../services'
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './login.style.css' ],
+  styleUrls: [
+    './login.style.css',
+    // './../../../node_modules/uui_2.0/uui/bootstrap/css/bootstrap.min.css',
+    // './../../../node_modules/uui_2.0/uui/css/uui-all.css'
+  ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
   templateUrl: './login.template.html'
 })
@@ -50,8 +54,7 @@ export class Login {
       'pwd': [
         this.user.pwd,
         [
-          Validators.required,
-          Validators.minLength(5)
+          Validators.required
         ]
       ]
     });

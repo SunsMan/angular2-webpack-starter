@@ -17,11 +17,11 @@ import {CourseItem} from "./../services/courseItem";
   // We need to tell Angular's compiler which custom pipes are in our template.
   pipes: [ ],
   // Our list of styles in our component. We may add more to compose many styles together
-  styleUrls: [ './login.style.css' ],
+  styleUrls: [ './courses.style.css' ],
   // Every Angular template is first compiled by the browser before Angular runs it's compiler
-  templateUrl: './login.template.html'
+  templateUrl: './courses.template.html'
 })
-export class Login {
+export class Courses {
   private courses:CourseItem[];
   // loginForm:FormGroup;
   formErrors:any[];
