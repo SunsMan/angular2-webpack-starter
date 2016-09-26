@@ -1,17 +1,29 @@
 <form novalidate class="login-container" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-
-  <div class="uui-input-group" [ngClass]="{'input-error': loginForm.controls.login.hasError('required')}">
-    <input type="text" class="uui-form-element" formControlName="login" [ngClass]="{'error': loginForm.controls.login.hasError('required')}" />
-    <div class="error-notification" *ngIf="loginForm.controls.login.hasError('required')">
+  <div class="warning" *ngIf="!loginFormIsCorrect">
+    Password or login are invalid.
+  </div>
+  <div class="success" *ngIf="loginFormIsCorrect&&user.name">
+    logged in. User name = {{user.name}}
+  </div>
+  <div class="" [ngClass]="{'input-error': loginForm.controls.login.hasError('required')}">
+    <label for="login">
+      <input id="login" type="text" class="uui-form-element" formControlName="login"  [ngClass]="{'error': (loginForm.controls.login.hasError('required') || loginForm.controls.login.hasError('minlength') || loginForm.controls.login.hasError('pattern'))&&loginForm.controls.login.touched}" />
+    </label>
+    <div class="error-notification" *ngIf="(loginForm.controls.login.hasError('required') || loginForm.controls.login.hasError('minlength') || loginForm.controls.login.hasError('pattern'))&&loginForm.controls.login.touched">
       <p><span *ngIf="loginForm.controls.login.hasError('required')">Login is required. Please, enter your login here.</span></p>
+      <p><span *ngIf="loginForm.controls.login.hasError('minlength')">Login have to be greater then 1 symbol.</span></p>
+      <p><span *ngIf="loginForm.controls.login.hasError('pattern')">Login must contain only latin symbols.</span></p>
     </div>
   </div>
-  <div class="uui-input-group" [ngClass]="{'input-error': loginForm.controls.pwd.hasError('required')}">
-    <input type="text" class="uui-form-element" formControlName="pwd" [ngClass]="{'error': loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('minlength')}" />
-    <div class="error-notification" *ngIf="loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('minlength')">
+  <div class="" [ngClass]="{'input-error': loginForm.controls.pwd.hasError('required')}">
+    <label for="pwd">
+      <input id="pwd" type="password" class="uui-form-element" formControlName="pwd"  [ngClass]="{'error': (loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('pattern')||loginForm.controls.pwd.hasError('minlength'))&&loginForm.controls.pwd.touched}" />
+    </label>
+    <div class="error-notification" *ngIf="(loginForm.controls.pwd.hasError('required')||loginForm.controls.pwd.hasError('pattern')||loginForm.controls.pwd.hasError('minlength'))&&loginForm.controls.pwd.touched">
       <p><span *ngIf="loginForm.controls.pwd.hasError('required')">Password is required. Please, enter your password here.</span>
         <span *ngIf="loginForm.controls.pwd.hasError('minlength')">Minimal length of your password is 5 symbols</span></p>
+      <p><span *ngIf="loginForm.controls.pwd.hasError('pattern')">Password must contain latin symbols and numbers.</span></p>
     </div>
   </div>
-  <button class="uui-button dark-gray" type="submit">Sign in</button>
+  <button class="uui-button dark-gray" (click)="signIn()">Sign in</button>
 </form>

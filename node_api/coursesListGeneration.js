@@ -22,7 +22,9 @@ var names = [
   'Backbone'
 ]
 for (var i = 0; i < 5; i++) {
-  coursesList.push(generateNewCourse(i))
+  var generatedItem = generateNewCourse(i);
+  generatedItem.id = i;
+  coursesList.push(generatedItem);
 }
 
 function generateNewCourse(num) {

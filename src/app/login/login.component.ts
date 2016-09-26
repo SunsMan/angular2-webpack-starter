@@ -1,7 +1,9 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
 import { FormGroup, FormControl, Validators, FormBuilder, REACTIVE_FORM_DIRECTIVES } from '@angular/forms';
-import { CredentialHandler } from '../services'
-
+// import { Observable } from 'rxjs';
+import {ActivatedRoute, Router} from '@angular/router';
+import { UserItem } from '../services';
+import { CredentialHandlerService } from '../services/credentialHandler';
 
 @Component({
   // The selector is what angular internally uses
@@ -9,7 +11,7 @@ import { CredentialHandler } from '../services'
   // where, in this case, selector is the string 'login'
   selector: 'login',  // <login></login>
   // We need to tell Angular's Dependency Injection which providers are in our app.
-  providers: [],
+  providers: [CredentialHandlerService],
   // We need to tell Angular's compiler which directives are in our template.
   // Doing so will allow Angular to attach our behavior to an element
   directives: [],
@@ -25,48 +27,74 @@ import { CredentialHandler } from '../services'
   templateUrl: './login.template.html'
 })
 export class Login {
-  private formsErrors:any[];
-  private loginForm: FormGroup;
-  private fb:FormBuilder;
-  private user:any;
-  private credentialHandler:CredentialHandler;
+  formsErrors:any[];
+  loginForm: FormGroup;
+  // private fb:FormBuilder;
+  private user:UserItem;
 
-  constructor() { }
+  loginFormIsCorrect:boolean;
+
+  constructor(private activatedRoute:ActivatedRoute,
+              private router:Router,
+              private fb:FormBuilder,
+              public credentialHandler:CredentialHandlerService) {
+    this.user = new UserItem(undefined, undefined, undefined);
+  }
 
   ngOnInit() {
     console.log('hello `Login` component');
     this.loginForm = this.fb.group({});
     this.initForm();
+    this.loginFormIsCorrect = true;
   }
-  ngOnDestroy() {
-
-  }
+  ngOnDestroy() {}
 
   initForm() {
     var vm = this;
     this.loginForm = this.fb.group({
       'login': [
-        this.user.login,
+        this.user.name,
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(1),
+          Validators.pattern('([A-Za-z])+')
         ]
       ],
       'pwd': [
         this.user.pwd,
         [
-          Validators.required
+          Validators.required,
+          Validators.minLength(1),
+          Validators.pattern('([A-Za-z0-9])+')
         ]
       ]
     });
   }
 
   onSubmit(){
-    console.log('Form submited');
-    console.log(this.loginForm);
-    let checkForm = this.credentialHandler.checkCredentials(this.loginForm.controls['login'].value, this.loginForm.controls['pwd'].value);
 
   }
+  signIn() {
+    console.log('Form submited');
+    console.log(this.loginForm);
+    console.log(this.credentialHandler);
 
+    this.credentialHandler
+      .checkCredentials(
+        this.loginForm.controls['login'].value, this.loginForm.controls['pwd'].value
+      )
+      .subscribe((response) => {
+        this.loginFormIsCorrect = true;
+        this.user = response;
+        console.log(this.loginFormIsCorrect);
+      }, (error) => {
+        // this.loginForm.controls['pwd']. = '';
+        this.loginFormIsCorrect = false;
+        console.log(this.loginFormIsCorrect);
+      });
+  }
 
+  // validateLogin() {}
+  // validatePWD() {}
 
 }
