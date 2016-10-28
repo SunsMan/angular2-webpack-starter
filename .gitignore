@@ -59,3 +59,7 @@ npm-debug.log
 # IDE #
 .idea/
 *.swp
+
+# keys
+aws_id_rsa
+aws_id_rsa.pub
